@@ -1,0 +1,47 @@
+<!-- <?php
+include("connection.php");
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    echo "<script>alert('Please login or sign up to access the Dashboard'); window.location.href='index.php';</script>";
+    exit();
+}
+
+$username = $_SESSION["user"];
+$sql = "SELECT name FROM users WHERE username = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+?> -->
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="style.css">
+        <title>Dashboard</title>    
+    </head>
+    <body>
+        <div class="container">
+            <script src="main.js"></script>
+            <div id="search_card">search card</div>
+
+
+            <div id="side_bar">side bar</div>
+
+
+            <div id="profile">profile</div>
+
+            <div id="goal_progress">
+                <div id="inner_card">inner</div>
+            </div>
+
+            <div id="expenses">expenses</div>
+
+            <div id="spending_rate">spending rate</div>
+
+        </div>
+    </body>
+</html>

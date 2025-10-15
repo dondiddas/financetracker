@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #DDDDDD;
+    overflow: hidden;  
+}
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  gap: 15px;
+}
+
+#search_card {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;   
+    background-color: #ffff;
+}
+
+#side_bar {
+    width: 250px;
+    height: 580px;
+    gap: 15px;
+    border-radius: 10px; 
+    background-color: #ffff;
+}
+
+#profile {
+    background-color: #ffff;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px; 
+} 
+
+#goal_progress {
+  position: relative;  
+  top: -725px;              /* move down or up */
+  left: 265px;             /* move sideways */
+  width: 250px;
+  gap: 15px;
+  height: 160px;
+  border-radius: 10px;
+  background-color: #ffff;
+}
+
+#inner_card{
+ top: 5px;
+ left: 5px;
+ position: relative;
+ border: 0.5px solid #000;
+ border-radius: 10px;
+ width: 235px;
+ height: 115px;
+}
+
+#expenses {
+  position: relative;  
+  top: -901.5px;             
+  left: 530px;             
+  border: 1px solid #000;
+  width: 250px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+#spending_rate {
+  position: relative;  
+  top: -1078px;             
+  left: 800px;             
+  border: 1px solid #000;
+  width: 250px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+
+
