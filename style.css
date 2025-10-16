@@ -1,83 +1,269 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
-  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Whole page layout */
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: #DDDDDD;
-    overflow: hidden;  
+  background-color: #ddd;
+  display: flex;          /* Sidebar and main side by side */
+  height: 100vh;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
-.container {
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 76%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
   display: flex;
-  flex-direction: column; 
+  margin-left: 15px;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: -350px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #cbc9c9;
+  transform: translateX(4px);
+}
+
+.menu a.active {
+  background-color: #eaeaea;
+}
+
+/* Divider */
+.menu hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+
+/* Top bar (search bar container) */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 60px;
+}
+
+/* Search bar */
+.search-bar {
+  margin-top: 15px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 35px;
+  width: 250px;
+  height: 45px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.search-bar img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  flex: 1;
+  background: transparent;
+}
+
+.progress {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 280px;
+  height: 150px;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.progress1 {
+  font-weight: 500;
+  padding: 0 40px;
+  display: flex;
+  border: 1px solid #333;
+  width: 260px;
+  height: 90px;
+  border-radius: 10px;
   gap: 15px;
 }
 
-#search_card {
-    width: 250px;
-    height: 50px;
-    border-radius: 10px;   
-    background-color: #ffff;
-}
-
-#side_bar {
-    width: 250px;
-    height: 580px;
-    gap: 15px;
-    border-radius: 10px; 
-    background-color: #ffff;
-}
-
-#profile {
-    background-color: #ffff;
-    width: 250px;
-    height: 50px;
-    border-radius: 10px; 
-} 
-
-#goal_progress {
-  position: relative;  
-  top: -725px;              /* move down or up */
-  left: 265px;             /* move sideways */
-  width: 250px;
+.allowance {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 15px;
-  height: 160px;
+  width: 280px;
+  height: 150px;
+  margin-left: 15px;
+  margin-top: 15px;
   border-radius: 10px;
-  background-color: #ffff;
 }
 
-#inner_card{
- top: 5px;
- left: 5px;
- position: relative;
- border: 0.5px solid #000;
- border-radius: 10px;
- width: 235px;
- height: 115px;
+.allowance1 {
+  font-weight: 500;
+  display: flex;
+  border: 1px solid #333;
+  width: 100px;
+  gap: 15px;
+  width: 260px;
+  height: 90px;
+  border-radius: 10px;
+  padding: 0 40px;
 }
 
-#expenses {
-  position: relative;  
-  top: -901.5px;             
-  left: 530px;             
-  border: 1px solid #000;
+.spending {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 280px;
+  height: 150px;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.spending1 {
+  font-weight: 500;
+  display: flex;
+  border: 1px solid #333;
+  width: 100px;
+  gap: 15px;
+  width: 260px;
+  height: 90px;
+  border-radius: 10px;
+  padding: 0 40px;
+}
+
+.top {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
+  height: 400px;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.top1 {
+  font-weight: 500;
+  display: flex;
+  width: 400px;
+  gap: 15px;
+  padding: 0 100px;
+}
+
+.chart-wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 870px;
+  height: 350px;
+  margin-left: 15px;
+  margin-top: -240px;
+  border-radius: 10px;
+}
+
+.transac-wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 350px;
+  height: 40%;
+  border-radius: 10px;
+}
+
+.transac {
+  font-weight: 500;
+  padding: 0 90px;
+  width: 400px;
+  margin-top: 15px;
+}
+
+.profile-wrapper {
+  display: flex;
+  background-color: #fff;
+  margin-top: -85px;
+  margin-left: 15px;
   width: 250px;
-  height: 160px;
+  height: 80px;
   border-radius: 10px;
 }
 
-#spending_rate {
-  position: relative;  
-  top: -1078px;             
-  left: 800px;             
-  border: 1px solid #000;
-  width: 250px;
-  height: 160px;
+.profile-area {
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.name {
+  font-weight: 500;
+  margin-left: 90px;
+  margin-top: -40px;
+}
+
+.budget-wrapper {
+  display: flex;
+  margin-left: 15px;
+  margin-top: -185px;
+  background-color: #fff;
+  width: 450px;
+  height: 180px;
   border-radius: 10px;
 }
 
-
-
+.bills-wrapper {
+  display: flex;
+  margin-left: 15px;
+  margin-top: -185px;
+  background-color: #fff;
+  height: 180px;
+  width: 405px;
+  border-radius: 10px;
+}

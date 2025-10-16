@@ -1,47 +1,69 @@
-<!-- <?php
-include("connection.php");
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    echo "<script>alert('Please login or sign up to access the Dashboard'); window.location.href='index.php';</script>";
-    exit();
-}
-
-$username = $_SESSION["user"];
-$sql = "SELECT name FROM users WHERE username = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-?> -->
 <!DOCTYPE html>
-<html lang="'en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="stylesheet" href="style.css">
-        <title>Dashboard</title>    
-    </head>
-    <body>
-        <div class="container">
-            <script src="main.js"></script>
-            <div id="search_card">search card</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
-
-            <div id="side_bar">side bar</div>
-
-
-            <div id="profile">profile</div>
-
-            <div id="goal_progress">
-                <div id="inner_card">inner</div>
-            </div>
-
-            <div id="expenses">expenses</div>
-
-            <div id="spending_rate">spending rate</div>
-
+        <div class="search-bar">
+            <img src="https://img.icons8.com/ios-filled/24/search--v1.png" alt="search icon">
+          <input type="search" placeholder="Search..."></input>
         </div>
-    </body>
-</html>
+
+    <div class="progress">
+            <div class="progress1">Goal Progress</div>
+    </div>
+
+    <div class="allowance">
+        <div class="allowance1">Allowance Overview</div>
+    </div>
+
+    <div class="spending">
+        <div class="spending1">Spending Rate</div>
+    </div>
+
+    <div class="top">
+        <div class="top1">Top Expenses</div>
+    </div>
+
+      <!-- Sidebar -->
+     <aside class="sidebar">
+      <nav class="menu">
+        <a href="dashboard.html" class="active">🏠 Overview</a>
+        <a href="transactions.html">💳 Transactions</a>
+        <a href="#">🎯 Goals</a>
+        <a href="#">🗓️ Planner</a>
+        <a href="#">⏰ Reminders</a>
+        <hr>
+        <a href="#">⚙️ Settings</a>
+        <a href="#">🚪 Logout</a>
+      </nav>
+    </aside>
+
+    <div class="chart-wrapper">
+        <div class="chart-placeholder">Chart</div>
+    </div>
+
+    <div class="transac-wrapper">
+        <div class="transac">Recent Transactions</div>
+    </div>
+    
+    <div class="profile-wrapper">
+        <div class="profile-area">
+            <img src="https://img.icons8.com/ios-filled/50/user-male-circle.png" alt="Profile">
+            <p class="name">Profile</p>
+        </div>
+    </div> 
+
+    <div class="budget-wrapper">
+        <div class="budget">Budget Health  </div>
+    </div>
+
+    <div class="bills-wrapper">
+        <div class="bills">Upcoming Bills</div>
+    </div>
+</body>
