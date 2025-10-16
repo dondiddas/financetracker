@@ -1,55 +1,39 @@
-// console.log("pie-chart");
+const chartData = {
+  labels: ["Python", "Java", "C#", "CSS", "Others"],
+  data: [40, 24, 56, 12, 50],
+};
 
-// document.addEventListener("DOMContentLoaded",showPieChart)
+const myChart = document.querySelector(".myChart").getContext("2d");
 
-// function showPieChart(){
-//     console.log("pie-chart on load")
-    
-//     let sliceA={size:250, color:"blue"};
-//     let sliceB={size:750, color:"pink"};
-
-//     const values = [sliceA.size, sliceB.size]
-
-//     const total = values.reduce((acc,val) => acc + val, 0);
-
-//     let startAngle = 0;
-
-//     const canvas = document.getElementById("pie-chart");
-//     const ctx = canvas.getContext("2d");
-
-//     values.forEach((value, index) => {
-//         const angle = (value/total) * Math.PI * 2;
-
-//         ctx.beginPath();
-//         ctx.moveTo(canvas.width /2, canvas.height /2);
-//         ctx.arc(
-//             canvas.width/2,
-//             canvas.height/2,
-//             canvas.width/2,
-//             startAngle,
-//             startAngle + angle
-//         );
-//         ctx.closePath();
-
-//         ctx.fillStyle = index === 0 ? sliceA.color : sliceB.color;
-//         ctx.fill();
-
-//         startAngle += angle;
-//     });
-//     const legend = document.getElementById("pie-chart-legend");
-//     legend.innerHTML=`
-//     <div class="legend-item">
-//     <div class="legend-color" style="background-color:${sliceA.color}"></div>
-//     </div>
-//     <div class="legend-label">Total invested: $${sliceA.size} - ${((sliceA.size/total)*100).toFixed((2))}%</div>
-//     </div>
-//     <div class="legend-item">
-//     <div class="legend-color" style="background-color:${sliceB.color}"></div>
-//     </div>
-//     <div class="legend-label">Total invested: $${sliceB.size} - ${((sliceB.size/total)*100).toFixed((2))}%</div>
-//     </div>
-//     `;
-    
-// }
-    
-
+new Chart(myChart, {
+  type: "doughnut",
+  data: {
+    labels: chartData.labels,
+    datasets: [{
+      label: "Language",
+      data: chartData.data,
+      backgroundColor: [
+        "#4CAF50",
+        "#2196F3",
+        "#FF9800",
+        "#E91E63",
+        "#9C27B0"
+      ],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    clip: {left: 200, top: false, right: -2, bottom: 0},
+    responsive: true,
+    borderWidth: 10,
+    borderRadius: 3,
+    hoverBorderWidth: 10,
+    maintainAspectRatio: false, 
+    plugins: {
+      legend: {
+        display: true,
+        position: "left",
+      } 
+    }
+  }
+});

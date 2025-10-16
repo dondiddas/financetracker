@@ -200,11 +200,28 @@ body {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  align-items: center;      
+  justify-content: center; 
   width: 870px;
   height: 350px;
   margin-left: 15px;
   margin-top: -240px;
   border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+  padding: 20px;
+}
+
+.chart {
+  position: relative;
+  width: 20%;
+  height: 20%;
+}
+
+.myChart {
+  width: 420px !important;
+  height: 420px !important;
+  max-width: 320px;
+  max-height: 320px;
 }
 
 .transac-wrapper {
