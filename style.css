@@ -7,7 +7,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Whole page layout */
 body {
   background-color: #ddd;
   display: flex;          /* Sidebar and main side by side */
@@ -101,6 +100,8 @@ body {
   background: transparent;
 }
 
+
+/* goal progress */
 .progress {
   background-color: #fff;
   padding: 10px;
@@ -115,17 +116,87 @@ body {
 }
 
 .progress1 {
+  margin-top: -10px;
   font-weight: 500;
   padding: 0 40px;
   display: flex;
   border: 1px solid #333;
   width: 260px;
-  height: 90px;
+  height: 100px;
   border-radius: 10px;
   gap: 15px;
 }
 
-.allowance {
+.progress_title {
+  margin-left: 45px; 
+}
+
+.goal-title {
+  display: block;
+  width: 300px;
+  margin-left: 60px;
+  margin-top: -82px;
+  font-weight: 600;
+  font-size: 14px;
+} 
+
+.progress-bar-container {
+  display: block;
+  margin-left: 55px;
+  margin-top: 6px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+} 
+
+.progress-bar {
+  width: 100px;
+  background: linear-gradient(90deg, #00C853, #64DD17);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  gap: 15px;
+} 
+
+/* .progress-content{
+  display: flex; 
+  flex-direction: column; 
+  justify-content: left; 
+  align-items: center; 
+  width: 100%;
+  margin-left: 40px;
+  margin-top: 20px;
+} */
+
+
+.progress-percent {
+  display: block;
+  height: 50px;
+  width: 180px;
+  justify-content: center;
+  margin-left: 65px;
+  margin-top: 2px;
+  font-size: 13px;
+  color: #333;
+} 
+
+
+.goal-image {
+  display: block;
+  width: 70px;
+  margin-left: -30px;
+  height: 80px;
+  margin-top: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+/* allowance */
+.allowance {/* card */
   background-color: #fff;
   padding: 10px;
   display: flex;
@@ -138,16 +209,18 @@ body {
   border-radius: 10px;
 }
 
+.allowance_title{
+  font-weight: 600;
+}
+
+
+/* allowance bordered card */
 .allowance1 {
-  font-weight: 500;
   display: flex;
   border: 1px solid #333;
-  width: 100px;
-  gap: 15px;
-  width: 260px;
-  height: 90px;
+  height: 200px;
   border-radius: 10px;
-  padding: 0 40px;
+  margin-top: -10px;
 }
 
 .spending {
