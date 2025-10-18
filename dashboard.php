@@ -12,6 +12,58 @@ include("goal_processes.php");
 </head>
 <body>
 
+  <div class="left-grid">
+    <div class="search-container">
+        <img src="https://img.icons8.com/ios-filled/24/search--v1.png" alt="search icon">
+        <input type="search" placeholder="Search...">
+    </div>
+
+    <!-- Sidebar-->
+    <?php include('sidebar.php'); ?>
+
+    <div class="profile-container"></div>
+  </div>
+
+  <div class="mid-grid">
+    <div class="mid-container">
+        <div class="goal-container">
+            <h4> Goal Progress</h4>
+            <div class="goal-border">
+                <div class="image-container">
+                    <img src="<?php echo $goal_image; ?>" alt="Goal Image" class="goal-image">
+                </div>
+                <div class="goal-description-container">
+                    <h4 class="goal-title"><?php echo htmlspecialchars($title); ?></h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: <?php echo (float)$progress; ?>%;"></div>
+                    </div>
+                    <p class="progress-percent">
+                        <?php echo number_format($progress, 1); ?>% Completed
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="allowance-container"></div>
+        <div class="spending-container"></div>
+    </div>
+
+    <div class="chart-container"></div>
+    
+    <div class="bottom-container">
+        <div class="budget-health-container"></div>
+        <div class="upcoming-bills-container"></div>
+    </div>
+  </div>
+
+  <div class="right-grid">
+    <div class="top-expenses-container"></div>
+    <div class="recent-transaction-container"></div>
+  </div>
+
+</body>
+</html>
+
+ <!--
   <div class="search-bar">
     <img src="https://img.icons8.com/ios-filled/24/search--v1.png" alt="search icon">
     <input type="search" placeholder="Search...">
@@ -48,7 +100,6 @@ include("goal_processes.php");
     <div class="top1">Top Expenses</div>
   </div>
 
-  <!-- Sidebar -->
   <aside class="sidebar">
     <nav class="menu">
       <a href="dashboard.php" class="active">🏠 Overview</a>
@@ -87,6 +138,6 @@ include("goal_processes.php");
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js"></script> -->
 </body>
 </html>
