@@ -309,6 +309,11 @@
   height: 90px;
   }
 
+  .spending-title {
+    font-weight: 900;
+    font-size: 15px;
+  }
+
   .spending-container h4 {
     font-size: 18px;
   }
@@ -325,10 +330,6 @@
     gap: 20px;
     font-size: 14px;
   }
-
-
-
-
 
   .chart-container {
     gap: 15px;
@@ -349,12 +350,59 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content:flex-start;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     background-color: #fff;
     width: 345px;
     height: 400px;
     border-radius: 8px;
+    padding: 20px 15px;
+    gap: 15px;
   }
+
+  .top-expenses-title {
+    gap: 15px;
+  }
+
+  .top-expenses-container h4 {
+    font-size: larger;
+  }
+
+  .top-expenses-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px; 
+    overflow-y: auto;  
+    scrollbar-width: thin; 
+}
+
+.top-expenses-container li {
+    display: flex;
+    justify-content: space-between; /* handles spacing automatically */
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    flex-wrap: wrap; 
+}
+
+.expense-category {
+    flex: 1;               
+    color: #333;
+    white-space: nowrap;  
+    overflow: hidden;     
+    text-overflow: ellipsis; 
+}
+
+.expense-amount {
+    flex-shrink: 0;       
+    min-width: 70px;       
+    text-align: right;
+    font-weight: 600;
+    color: #444;
+}
 
   .recent-transaction-container{
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -370,13 +418,81 @@
     gap: 15px;
   }
 
-  .budget-health-container {
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    background-color: #fff;
-    width: 450px;
-    height: 185px;
-    border-radius: 8px;
-  }
+
+  /* Savings card base */
+.savings-insight {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  min-height: 150px;
+  width: 450px;
+  height: 185px;
+  border-radius: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.savings-insight:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.savings-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.savings-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937; /* default color - will be overridden by fill color if desired */
+}
+
+/* bar */
+.savings-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #e6eef0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* fill default */
+.savings-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.45s cubic-bezier(.2,.9,.2,1), background 0.25s ease;
+}
+
+/* === Colors per threshold === */
+/* low: <=20% -> red */
+.savings-fill.low {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+/* medium: <=50% -> neutral/yellow */
+.savings-fill.medium {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+/* high: >50% -> green */
+.savings-fill.high {
+  background: linear-gradient(90deg, #16a34a, #4ade80);
+}
+
+/* small text */
+.savings-text {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
 
   .upcoming-bills-container{
     box-shadow: 0 0 5px rgba(0,0,0,0.2);

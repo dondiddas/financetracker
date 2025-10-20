@@ -1,30 +1,59 @@
 <?php
-include("connection.php"); // your db connection
+include("connection.php");
 $userID = 1;
-$currentMonth = date('Y-m');
-$lastMonth = date('Y-m', strtotime('-1 month'));
 
-// Get current month allowance
-$queryCurrent = "SELECT amount FROM user_allowance WHERE userID = ? AND DATE_FORMAT(month_year, '%Y-%m') = ?";
+// compute current month start/end
+$currentStart = date('Y-m-01');          // e.g. "2025-10-01"
+$currentEnd   = date('Y-m-t');           // e.g. "2025-10-31"
+
+// compute last month start/end
+$lastStart = date('Y-m-01', strtotime('-1 month'));
+$lastEnd   = date('Y-m-t',  strtotime('-1 month'));
+
+// --- Current month ---
+$queryCurrent = "
+    SELECT COALESCE(SUM(amount), 0) AS amount
+    FROM user_allowance
+    WHERE userID = ?
+      AND month_year BETWEEN ? AND ?
+";
 $stmt = $conn->prepare($queryCurrent);
-$stmt->bind_param("is", $userID, $currentMonth);
+if (!$stmt) {
+    die("Prepare failed (current): " . $conn->error);
+}
+$stmt->bind_param("iss", $userID, $currentStart, $currentEnd);
 $stmt->execute();
+if ($stmt->errno) {
+    die("Execute failed (current): " . $stmt->error);
+}
 $resultCurrent = $stmt->get_result();
-$currentAllowance = $resultCurrent->fetch_assoc()['amount'] ?? 0;
+$rowCurrent = $resultCurrent ? $resultCurrent->fetch_assoc() : null;
+$currentAllowance = $rowCurrent ? (float)$rowCurrent['amount'] : 0.0;
+$stmt->close();
 
-// Get last month allowance
-$queryLast = "SELECT amount FROM user_allowance WHERE userID = ? AND DATE_FORMAT(month_year, '%Y-%m') = ?";
+// --- Last month ---
+$queryLast = "
+    SELECT COALESCE(SUM(amount), 0) AS amount
+    FROM user_allowance
+    WHERE userID = ?
+      AND month_year BETWEEN ? AND ?
+";
 $stmt = $conn->prepare($queryLast);
-$stmt->bind_param("is", $userID, $lastMonth);
+if (!$stmt) {
+    die("Prepare failed (last): " . $conn->error);
+}
+$stmt->bind_param("iss", $userID, $lastStart, $lastEnd);
 $stmt->execute();
+if ($stmt->errno) {
+    die("Execute failed (last): " . $stmt->error);
+}
 $resultLast = $stmt->get_result();
-$lastAllowance = $resultLast->fetch_assoc()['amount'] ?? 0;
+$rowLast = $resultLast ? $resultLast->fetch_assoc() : null;
+$lastAllowance = $rowLast ? (float)$rowLast['amount'] : 0.0;
+$stmt->close();
 
-// Calculate difference
+// difference & status
 $difference = $currentAllowance - $lastAllowance;
-
-// Determine status
-
 if ($difference > 0) {
     $status = "▲ ₱" . number_format($difference, 2);
     $class = "increase";
@@ -35,4 +64,5 @@ if ($difference > 0) {
     $status = "No change";
     $class = "no-change";
 }
+
 ?>

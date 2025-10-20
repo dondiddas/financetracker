@@ -2,7 +2,8 @@
 include("goal_processes.php");
 include("allowance_processes.php");
 include("spending_rate_processes.php");
-include("top_expenses_processes.php")
+include("top_expenses_processes.php");
+include("savings_insight_processes.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +63,7 @@ include("top_expenses_processes.php")
         <div class="spending-container">
             <h4>Spending Rate</h4>
             <div class="spending-border">
-                    <p> Total spent</p>
+                    <p class="spending-title"> Total spent</p>
                 <p class="classpending"><?php echo $spentDisplay; ?></p>
                 <div class="spending-descrip">
                     <?php echo $spendingRate ?>%
@@ -71,24 +72,36 @@ include("top_expenses_processes.php")
             </div>
         </div>
     </div>
+      <div class="chart-container"></div>
+      <div class="bottom-container">
+        <div class="savings-insight">
+  <h4 class="savings-title">Savings Insight</h4>
 
-    <div class="chart-container"></div>
-    <div class="bottom-container">
-        <div class="budget-health-container"></div>
-        <div class="upcoming-bills-container"></div>
-    </div>
+  <div class="savings-amount"><?php echo $savingsDisplay; ?> Saved</div>
+
+  <div class="savings-bar" role="progressbar" aria-valuenow="<?php echo round($savingsPercent); ?>" aria-valuemin="0" aria-valuemax="100">
+    <div class="savings-fill <?php echo $savingsClass; ?>" style="width: <?php echo $savingsPercent; ?>%;"></div>
   </div>
 
+  <p class="savings-text">
+    <?php echo $savingsPercentDisplay; ?> of your 
+    ₱<?php echo number_format($currentAllowance, 2); ?> allowance remains this month.
+  </p>
+</div>
+            <div class="upcoming-bills-container"></div>
+      </div>
+    </div>
   <div class="right-grid">
     <div class="top-expenses-container">
         <h4>Expense Breakdown</h4>
-    <ul>
-        <?php foreach ($expenseCategories as $expense): ?>
-            <li>
-                <?= htmlspecialchars($expense['category_name']) ?> — ₱<?= number_format($expense['total_spent'], 2) ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+          <ul>
+            <?php foreach ($expenseCategories as $expense): ?>
+                <li>
+                    <span class="expense-category"><?= htmlspecialchars($expense['category_name']) ?></span>
+                    <span class="expense-amount">₱<?= number_format($expense['total_spent'], 2) ?></span>
+                </li>
+            <?php endforeach; ?>
+         </ul>
     </div>
     <div class="recent-transaction-container"></div>
   </div>
