@@ -53,9 +53,8 @@
     font-size: 14px;
   }
   
-  .allowance-container,
-  .goal-container,
-  .spending-container {
+  
+  .goal-container {
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     background-color: #fff;
     width: 280px;
@@ -64,6 +63,12 @@
     box-sizing: border-box;
     border-radius: 8px;
     padding: 12px;
+    z-index: 1;
+    text-decoration: none;
+    color: inherit;
+  }
+  .goal-border, .goal-description-container, .image-container {
+    pointer-events: none;
   }
 
   .side-bar-container {
@@ -151,7 +156,7 @@
 
   .goal-border {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     border: 1px solid #000000;
     border-radius: 8px;
     width: 250px;
@@ -198,10 +203,9 @@
   .progress-bar-container {
     background-color: #eee;
     border-radius: 5px;
-    height: 10px;
+    height: 40px;
     width: 100%;
     overflow: hidden;
-    margin-top: 6px;
   }
 
   /* Progress fill */
@@ -215,8 +219,115 @@
   /* Percentage text */
   .progress-percent {
     font-size: 13px;
-    color: #555;
   }
+
+  .allowance-container {
+    align-items:end ;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    width: 280px;
+    height: 150px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 5px;
+    }
+  .allowance-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .allowance-container h4 {
+  font-size: 18px;
+  color: #333;
+  }
+
+  .allowance-border {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  width: 250px;
+  height: 150px;
+  }
+
+  .current-allowance {
+    font-size: 30px;
+  }
+
+  .difference-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  .increase {
+  color: #16A34A; /* green */
+}
+
+.decrease {
+  color: #EF4444; /* red */
+}
+
+.no-change {
+  color: #333333; /* neutral gray */
+}
+
+    .spending-container {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: #fff;
+    width: 280px;
+    height: 150px;
+    min-width: 180px;   
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+  }
+  .spending-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .spending-border {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  width: 250px;
+  height: 90px;
+  }
+
+  .spending-container h4 {
+    font-size: 18px;
+  }
+
+  .classpending {
+    display: flex;
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .spending-descrip {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 14px;
+  }
+
+
+
 
 
   .chart-container {
@@ -235,6 +346,9 @@
   }
 
   .top-expenses-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     background-color: #fff;
     width: 345px;
@@ -280,7 +394,7 @@
     border-radius: 8px;
   }
 
-  @media (max-width: 1024px) {
+   /* @media (max-width: 1024px) {
   body {
     flex-direction: column;
     align-items: center;
@@ -313,11 +427,11 @@
   }
 
   .side-bar-container {
-    display: none; /* optional: hide sidebar on tablets */
+    display: none; 
   }
 }
 
-/* Mobile (≤ 768px) */
+   Mobile (≤ 768px) 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -357,10 +471,10 @@
   }
 
   .side-bar-container {
-    display: none; /* optional: hide sidebar for mobile */
+    display: none; 
   }
-}
-/* 
+} 
+
 .sidebar {
   width: 250px;
   height: 76%;
@@ -374,7 +488,7 @@
   margin-top: -350px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid #eee;
-}
+} */
 
 /* .menu {
   display: flex;

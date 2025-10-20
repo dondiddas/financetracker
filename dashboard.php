@@ -1,5 +1,8 @@
 <?php
 include("goal_processes.php");
+include("allowance_processes.php");
+include("spending_rate_processes.php");
+include("top_expenses_processes.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +29,7 @@ include("goal_processes.php");
 
   <div class="mid-grid">
     <div class="mid-container">
-        <div class="goal-container">
+        <a href="goals.php" class="goal-container">
             <h4> Goal Progress</h4>
             <div class="goal-border">
                 <div class="image-container">
@@ -42,13 +45,34 @@ include("goal_processes.php");
                     </p>
                 </div>
             </div>
+        </a>
+        <div class="allowance-container">
+            <h4>Allowance Overview</h4>
+            <div class="allowance-border">
+                <h5> <?php echo date('F Y'); ?></h5>
+                  <h3><div class="current-allowance"> ₱<?php echo $currentAllowance?></div></h3>
+                <div class="allowance-changes">
+                    <div class="difference-container <?php echo $class; ?>">
+                        <?php echo $status; ?>
+                        <p> from last month</p>
+                    </div>
+                </div>               
+            </div>
         </div>
-        <div class="allowance-container"></div>
-        <div class="spending-container"></div>
+        <div class="spending-container">
+            <h4>Spending Rate</h4>
+            <div class="spending-border">
+                    <p> Total spent</p>
+                <p class="classpending"><?php echo $spentDisplay; ?></p>
+                <div class="spending-descrip">
+                    <?php echo $spendingRate ?>%
+                   <p>of allowance</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="chart-container"></div>
-    
     <div class="bottom-container">
         <div class="budget-health-container"></div>
         <div class="upcoming-bills-container"></div>
@@ -56,7 +80,16 @@ include("goal_processes.php");
   </div>
 
   <div class="right-grid">
-    <div class="top-expenses-container"></div>
+    <div class="top-expenses-container">
+        <h4>Expense Breakdown</h4>
+    <ul>
+        <?php foreach ($expenseCategories as $expense): ?>
+            <li>
+                <?= htmlspecialchars($expense['category_name']) ?> — ₱<?= number_format($expense['total_spent'], 2) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    </div>
     <div class="recent-transaction-container"></div>
   </div>
 
