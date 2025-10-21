@@ -88,7 +88,11 @@ include("savings_insight_processes.php");
     ₱<?php echo number_format($currentAllowance, 2); ?> allowance remains this month.
   </p>
 </div>
-            <div class="upcoming-bills-container"></div>
+            <div class="upcoming-bills-container">
+              <div class="upcoming-bills-border">
+              <h4>Upcoming Bill</h4>
+              </div>
+            </div>
       </div>
     </div>
   <div class="right-grid">
